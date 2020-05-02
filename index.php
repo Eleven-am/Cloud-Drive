@@ -1,13 +1,13 @@
 <?php
 
 session_start();
-$_SESSION['root'] = "/home/maix/"; //this is the start direcory aka scope, going outside this scope requires authentication -- see auth.php
-$_SESSION["JSON"] = "/home/temp/json/"; //this is the location for the json files / necessary for the search, share and recent features -- see json.php
-$_SESSION["search"] = "/home/maix/"; //this is the search scope of the server, session_root recommended
-$_SESSION["password"] = "Eleven"; //this is the auth key allowing you to got outside session_root's scope, deleting, moving and renaming files
-$server = "maix.ovh"; //this is the server's domain.name it is used in the og meta tags 
-$name  = "Maix.Ovh"; //this is the still the Domain.Name but this can be stylised (capslock/not) it also is used in the og meta tags
-$user = "Roy Ossai"; //this is the proprietor of the server, you may use your name here. It is used in the og meta tags
+$_SESSION['root'] = ""; //this is the start direcory aka scope, going outside this scope requires authentication -- see auth.php
+$_SESSION["JSON"] = ""; //this is the location for the json files / necessary for the search, share and recent features -- see json.php
+$_SESSION["search"] = ""; //this is the search scope of the server, session_root recommended
+$_SESSION["password"] = ""; //this is the auth key allowing you to got outside session_root's scope, deleting, moving and renaming files
+$server = ""; //this is the server's domain.name it is used in the og meta tags 
+$name  = ""; //this is the still the Domain.Name but this can be stylised (capslock/not) it also is used in the og meta tags
+$user = ""; //this is the proprietor of the server, you may use your name here. It is used in the og meta tags
 // To finish config please head to js/properties.js and change line 49 to your server name
 
 ?>
