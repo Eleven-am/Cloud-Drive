@@ -14,7 +14,7 @@ The website's elements are all dynamically loaded and this brings with it some e
 
 ### The main features of the website
 * You can delete both files and folders ![](Githubimages/6.png)
-* You can move both files and folders from anywhere in/outside the scope of the website (within the scope of the server) ![](Githubimages/4.png)
+* You can move both files and folders from anywhere in/outside the scope of the website (within the scope of the website) ![](Githubimages/4.png)
 * You can rename both files and folders ![](Githubimages/5.png)
 * You can share both files and folders all with their 13 characterer generated string ("domain.name/share.php?url=haien347qio4nd72")
 * You can search for every file and folder within the search scope -- see index.php ![](Githubimages/14.png)
@@ -22,7 +22,7 @@ The website's elements are all dynamically loaded and this brings with it some e
 * The recent tab allows you access to the 4 last viewed files ![](Githubimages/1.png)
 * You can stream "webm, mkv, mp4 and m4v" files, all depending on the strength of your server ![](Githubimages/7.png)
 * You can view images in modals, and pdf files without downloding. ![](Githubimages/8.png)
-* You can download folders as zip files "note that this zip file isn't deleted and is stored in /home/temp/"
+* You can download files and (folders as zip files) "note that this zip file isn't deleted and is stored in /home/temp/"
 * You also have access to storage space used not by the website but in general, on your server.
 * The website shares notifications when tasks failed ![](Githubimages/11.png), succeded ![](Githubimages/10.png) or require attention ![](Githubimages/9.png)
 * The media button allows you to search for all streamable video in one go. ![](Githubimages/15.png)
