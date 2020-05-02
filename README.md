@@ -25,4 +25,7 @@ The website's elements are all dynamic loaded and this brings with it some extra
 * You can download folders as zip files "note that this zip file isn't deleted and is stored in /home/temp/"
 * You also have access to storage space used not by the website but in general, on your server.
 * The website shares notifications when tasks failed ![](Githubimages/11.png), succeded ![](Githubimages/10.png) or require attention ![](Githubimages/9.png)
-* The media button allows you to search for all streamable video in one go.
+* The media button allows you to search for all streamable video in one go. ![](Githubimages/15.png)
+
+## Some more images
+![](Githubimages/2.png) ![](Githubimages/3.png)
