@@ -3,12 +3,12 @@ A personal cloud website built with CSS, PHP, JQuery and vanilla Javascript
 
 This project was something I built to pass the time during the quarantine. This is a welcome alternative to the default apache file system interface.
 
-This website has some basic security features.
+## This website has some basic security features.
 * Instead of having a url (eg "?url=/path/to/file") to the absolute path of file of folder shown, Every reference to file or folders are replaced with randomly generated 13 character strings ("?url=haien347qio4nd72"). This therefore means your items cannot be easily located for a download or maybe modification. 
 * Certain sensitive actions require authentication to continue, for example you need to authenticate to delete, move or rename files or folders.
 * A scope can be set. This scope is a directory and everything in this folder, ie. subfolders and files, in accordance with item 2 above, are made available to everyone that has your domain name but anything outside this scope also requires authentication.
 
-The website's elements are all dynamically loaded and this brings with it some extra added features.
+## The website's elements are all dynamically loaded and this brings with it some extra added features.
 * You can initiate an upload (by either drag and drop or by clicking on the upload button) and still be able to navigate through other folders or view files without affecting the upload ![](Githubimages/13.png) ![](Githubimages/12.png)
 * CSS and JS files are only ever downloaded once client side reducing bandwidth
 
