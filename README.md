@@ -12,9 +12,9 @@ The website is fully dynamic and this brings with it some extra added features.
 * You can initiate an upload (by either drag and drop or by clicking on the upload button) and still be able to navigate through other folders or view files without affecting the upload
 * CSS and JS files are only ever downloaded once clientside reducing bandwidth
 
-#The main features of the website
+### The main features of the website
 * You can delete both files and folders
-* You can move both files and folders
+* You can move both files and folders from anywhere in/outside the scope of the website (within the scope of the server)
 * You can rename both files and folders
 * You can share both files and folders all with their 13 characterer generated string ("domain.name/share.php?url=haien347qio4nd72")
 * You can search for every file and folder within the search scope -- see index.php
