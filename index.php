@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-$_SESSION['root'] = ""; //this is the start direcory aka scope, going outside this scope requires authentication -- see auth.php
+$_SESSION['root'] = ""; //this is the start directory aka scope, going outside this scope requires authentication -- see auth.php
 $_SESSION["JSON"] = ""; //this is the location for the json files / necessary for the search, share and recent features -- see json.php
 $_SESSION["search"] = ""; //this is the search scope of the server, session_root recommended
 $_SESSION["password"] = ""; //this is the auth key allowing you to got outside session_root's scope, deleting, moving and renaming files
