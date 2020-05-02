@@ -13,6 +13,7 @@ This project was something I built to pass the time during the quarantine. This 
 * CSS and JS files are only ever downloaded once client side reducing bandwidth
 
 ### The main features of the website
+
 * You can delete both files and folders ![](Githubimages/6.png)
 * You can move both files and folders from anywhere in/outside the scope of the website (within the scope of the website) ![](Githubimages/4.png)
 * You can rename both files and folders ![](Githubimages/5.png)
