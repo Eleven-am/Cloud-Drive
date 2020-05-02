@@ -8,7 +8,7 @@ This website has some basic security features.
 * Certain sensitive actions require authentication to continue, for example you need to autheticate to delete, move or rename files or folders.
 * A scope can be set. This scope is a directory and everything in this folder, ie. subfolders and files, in accordance with item 2 above, are made available to everyone that has your domain name but anything outside this scope also requires authentication
 
-The website's elements are all dynamic loaded and this brings with it some extra added features.
+The website's elements are all dynamically loaded and this brings with it some extra added features.
 * You can initiate an upload (by either drag and drop or by clicking on the upload button) and still be able to navigate through other folders or view files without affecting the upload ![](Githubimages/13.png) ![](Githubimages/12.png)
 * CSS and JS files are only ever downloaded once clientside reducing bandwidth
 
