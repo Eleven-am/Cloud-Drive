@@ -29,3 +29,6 @@ The website's elements are all dynamic loaded and this brings with it some extra
 
 ## Some more images
 ![](Githubimages/2.png) ![](Githubimages/3.png)
+
+
+Note: This website requires a working install of ffmpeg to work properly
