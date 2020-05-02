@@ -23,3 +23,4 @@ The website is fully dynamic and this brings with it some extra added features.
 * You can view images in modals, and pdf files without downloding.
 * You can download folders as zip files "note that this zip file isn't deleted and is stored in /home/temp/"
 * You also have access to storage space used not by the website but in general, on your server.
+* The website shares notifications when tasks failed, succeded or require attention
