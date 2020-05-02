@@ -17,6 +17,7 @@ The website is fully dynamic and this brings with it some extra added features.
 * You can move both files and folders
 * You can rename both files and folders
 * You can share both files and folders all with their 13 characterer generated string ("domain.name/share.php?url=haien347qio4nd72")
+* You can search for every file and folder within the search scope -- see index.php
 * You can Create folders anwhere php has write access to
 * The recent tab allows you access to the 4 last viewed files
 * You can stream "webm, mkv, mp4 and m4v" files, all depending on the strength of your server
@@ -24,3 +25,4 @@ The website is fully dynamic and this brings with it some extra added features.
 * You can download folders as zip files "note that this zip file isn't deleted and is stored in /home/temp/"
 * You also have access to storage space used not by the website but in general, on your server.
 * The website shares notifications when tasks failed, succeded or require attention
+* The media button allows you to search for all streamable video in one go.
