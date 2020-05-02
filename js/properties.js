@@ -46,7 +46,7 @@ function toggle(e) {
 function recupeur(baseurl, name){
     var items = document.getElementsByClassName("element");
     sharelink = baseurl;
-    items[0].setAttribute("data-clipboard-text", "https://www.maix.ovh/share.php?url="+baseurl);
+    items[0].setAttribute("data-clipboard-text", "https://.(your server)./share.php?url="+baseurl);
     items[1].setAttribute("info-url", baseurl);
     items[2].setAttribute("rename-url", "share.php?path="+baseurl);
     items[3].setAttribute("data-id", baseurl);
