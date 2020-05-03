@@ -244,70 +244,75 @@ session_start();
 
     function informJSON($dir, $new, $int){
         $dic = array($dir => $new);
+        if (startsWith($dir, $_SESSION['root'])){
+            if (file_exists($_SESSION["JSON"] . "share.json")) {
+                $share = retrieve($_SESSION["JSON"] . "share.json");
+                if (!empty($share)) {
+                    $skeys = [];
+                    $svalues = [];
 
-        if (file_exists($_SESSION["JSON"]."share.json")){
-            $share = retrieve($_SESSION["JSON"] . "share.json");
-            if (!empty($share)){
-                $skeys = [];
-                $svalues = [];
-
-                if ($int === 2) {
-                    foreach ($share as $code => $link) {
-                        $tscode = $code;
-                        $tslink = strtr($link, $dic);
-
-                        array_push($skeys, $tscode);
-                        array_push($svalues, $tslink);
-                    }
-
-                } else if ($int === 1) {
-                    foreach ($share as $code => $link) {
-                        if (strpos($link, $dir) === FALSE) {
+                    if ($int === 2) {
+                        foreach ($share as $code => $link) {
                             $tscode = $code;
-                            $tslink = $link;
+                            $tslink = strtr($link, $dic);
 
                             array_push($skeys, $tscode);
                             array_push($svalues, $tslink);
+                        }
 
+                    } else if ($int === 1) {
+                        foreach ($share as $code => $link) {
+                            if (strpos($link, $dir) === FALSE) {
+                                $tscode = $code;
+                                $tslink = $link;
+
+                                array_push($skeys, $tscode);
+                                array_push($svalues, $tslink);
+
+                            }
                         }
                     }
+
+                    $share = array_combine($skeys, $svalues);
+                    create($share, $_SESSION["JSON"] . "share.json");
                 }
-
-                $share = array_combine($skeys, $svalues);
-                create($share, $_SESSION["JSON"] . "share.json");
             }
-        }
 
-        if (file_exists($_SESSION["JSON"]."recent.json")) {
-            $recent = retrieve($_SESSION["JSON"] . "recent.json");
-            if (!empty($recent)){
-                $rkeys = [];
-                $rvalues = [];
+            if (file_exists($_SESSION["JSON"] . "recent.json")) {
+                $recent = retrieve($_SESSION["JSON"] . "recent.json");
+                if (!empty($recent)) {
+                    $rkeys = [];
+                    $rvalues = [];
 
-                if ($int === 2) {
-                    foreach ($recent as $link => $code) {
-                        $trcode = $code;
-                        $trlink = strtr($link, $dic);
-
-                        array_push($rkeys, $trlink);
-                        array_push($rvalues, $trcode);
-                    }
-
-                } else if ($int === 1) {
-                    foreach ($recent as $link => $code) {
-                        if (strpos($link, $dir) === FALSE) {
+                    if ($int === 2) {
+                        foreach ($recent as $link => $code) {
                             $trcode = $code;
-                            $trlink = $link;
+                            $trlink = strtr($link, $dic);
+                            $oldimage = $_SESSION["JSON"] . pathinfo($link, PATHINFO_FILENAME) . ".png";
+                            $newimage = $_SESSION["JSON"] . pathinfo($trlink, PATHINFO_FILENAME) . ".png";
+
+                            rename($oldimage, $newimage);
 
                             array_push($rkeys, $trlink);
                             array_push($rvalues, $trcode);
+                        }
 
+                    } else if ($int === 1) {
+                        foreach ($recent as $link => $code) {
+                            if (strpos($link, $dir) === FALSE) {
+                                $trcode = $code;
+                                $trlink = $link;
+
+                                array_push($rkeys, $trlink);
+                                array_push($rvalues, $trcode);
+
+                            }
                         }
                     }
-                }
 
-                $recent = array_combine($rkeys, $rvalues);
-                create($recent, $_SESSION["JSON"] . "recent.json");
+                    $recent = array_combine($rkeys, $rvalues);
+                    create($recent, $_SESSION["JSON"] . "recent.json");
+                }
             }
         }
     }
