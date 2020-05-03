@@ -154,64 +154,70 @@ function loadArrow(obj, int) {
     var length =  mediaArray.length;
     var checker = int === 0 || int === length - 1;
 
-    var up = int + 1;
-    var down = int - 1;
 
     if (!checker){
-        let rtemp  =  mediaArray[int+1].attributes["class"].nodeValue.search("media") === -1? "image": "media";
-        videodiv.rightArrow.setAttribute("class", "video-img arrow "+rtemp);
-        videodiv.rightArrow.setAttribute("int", up);
-        videodiv.rightArrow.setAttribute("data-id", mediaArray[int+1].attributes["data-id"].nodeValue);
-        videodiv.rightArrow.setAttribute("data-name", mediaArray[int+1].attributes["data-name"].nodeValue);
-        let ltemp  =  mediaArray[int-1].attributes["class"].nodeValue.search("media") === -1? "image": "media";
-        videodiv.leftArrow.setAttribute("class", "video-img arrow "+ltemp);
-        videodiv.leftArrow.setAttribute("int", down);
-        videodiv.leftArrow.setAttribute("data-id", mediaArray[int-1].attributes["data-id"].nodeValue);
-        videodiv.leftArrow.setAttribute("data-name", mediaArray[int-1].attributes["data-name"].nodeValue);
+       setbArrows(int);
     }
 
     else{
         if (int === 0 && length > 1){
-            let rtemp  =  mediaArray[int+1].attributes["class"].nodeValue.search("media") === -1? "image": "media";
-            videodiv.rightArrow.setAttribute("class", "video-img arrow "+rtemp);
-            videodiv.rightArrow.setAttribute("int", up);
-            videodiv.rightArrow.setAttribute("data-id", mediaArray[int+1].attributes["data-id"].nodeValue);
-            videodiv.rightArrow.setAttribute("data-name", mediaArray[int+1].attributes["data-name"].nodeValue);
-            videodiv.leftArrow.removeAttribute("int");
-            videodiv.leftArrow.removeAttribute("data-name");
-            videodiv.leftArrow.removeAttribute("data-id");
-            videodiv.leftArrow.setAttribute("class", "video-img");
+            setrArrow(int);
+            unsetlArrow();
         }
 
         else if(int === length - 1 && length > 1){
-            let ltemp  =  mediaArray[int-1].attributes["class"].nodeValue.search("media") === -1? "image": "media";
-            videodiv.leftArrow.setAttribute("class", "video-img arrow "+ltemp);
-            videodiv.leftArrow.setAttribute("int", down);
-            videodiv.leftArrow.setAttribute("data-id", mediaArray[int-1].attributes["data-id"].nodeValue);
-            videodiv.leftArrow.setAttribute("data-name", mediaArray[int-1].attributes["data-name"].nodeValue);
-            videodiv.rightArrow.removeAttribute("int");
-            videodiv.rightArrow.removeAttribute("data-name");
-            videodiv.rightArrow.removeAttribute("data-id");
-            videodiv.rightArrow.setAttribute("class", "video-img");
+            setlArrow(int);
+            unsetrArrow();
         }
 
         else{
-            unsetArrows();
+            unsetbArrows();
         }
     }
 
     loadMedia(obj);
 }
 
-function unsetArrows() {
-    videodiv.rightArrow.removeAttribute("int");
-    videodiv.rightArrow.removeAttribute("data-name");
-    videodiv.rightArrow.removeAttribute("data-id");
-    videodiv.rightArrow.setAttribute("class", "video-img");
+function setlArrow(int){
+    var down = int - 1;
+    let ltemp  =  mediaArray[int-1].attributes["class"].nodeValue.search("media") === -1? "image": "media";
+    videodiv.leftArrow.setAttribute("class", "video-img arrow "+ltemp);
+    videodiv.leftArrow.setAttribute("int", down);
+    videodiv.leftArrow.setAttribute("data-id", mediaArray[int-1].attributes["data-id"].nodeValue);
+    videodiv.leftArrow.setAttribute("data-name", mediaArray[int-1].attributes["data-name"].nodeValue);
+}
+
+function setrArrow(int) {
+    var up = int + 1;
+    let rtemp  =  mediaArray[int+1].attributes["class"].nodeValue.search("media") === -1? "image": "media";
+    videodiv.rightArrow.setAttribute("class", "video-img arrow "+rtemp);
+    videodiv.rightArrow.setAttribute("int", up);
+    videodiv.rightArrow.setAttribute("data-id", mediaArray[int+1].attributes["data-id"].nodeValue);
+    videodiv.rightArrow.setAttribute("data-name", mediaArray[int+1].attributes["data-name"].nodeValue);
+}
+
+function setbArrows( int){
+    setlArrow(int);
+    setrArrow(int);
+}
+
+function unsetlArrow() {
     videodiv.leftArrow.removeAttribute("int");
     videodiv.leftArrow.removeAttribute("data-name");
     videodiv.leftArrow.removeAttribute("data-id");
     videodiv.leftArrow.setAttribute("class", "video-img");
+}
+
+function unsetrArrow(){
+    videodiv.rightArrow.removeAttribute("int");
+    videodiv.rightArrow.removeAttribute("data-name");
+    videodiv.rightArrow.removeAttribute("data-id");
+    videodiv.rightArrow.setAttribute("class", "video-img");
+}
+
+function unsetbArrows() {
+    unsetrArrow();
+    unsetlArrow();
 }
 
 function loadMedia(obj){
@@ -233,6 +239,7 @@ function loadMedia(obj){
             if (!videodiv.element.contains(event.target) && !videodiv.leftArrow.contains(event.target) && !videodiv.rightArrow.contains(event.target)){
                 document.title = dom.innerHTML;
                 videodiv.block.style.display = "none";
+                unsetbArrows();
                 video.pause();
             }
         });
@@ -249,7 +256,7 @@ function loadMedia(obj){
             if (!videodiv.element.contains(event.target) && !videodiv.leftArrow.contains(event.target) && !videodiv.rightArrow.contains(event.target)){
                 document.title = dom.innerHTML;
                 videodiv.block.style.display = "none";
-                unsetArrows();
+                unsetbArrows();
             }
         });
     }
