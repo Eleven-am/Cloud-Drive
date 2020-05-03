@@ -235,14 +235,7 @@ function loadMedia(obj){
         document.title = "\u25B6   " + obj.name;
 
         videodiv.block.style.display = "block";
-        videodiv.block.addEventListener("click", function(){
-            if (!videodiv.element.contains(event.target) && !videodiv.leftArrow.contains(event.target) && !videodiv.rightArrow.contains(event.target)){
-                document.title = dom.innerHTML;
-                videodiv.block.style.display = "none";
-                unsetbArrows();
-                video.pause();
-            }
-        });
+
     } else if (obj.checker === "image"){
         var image = document.createElement("img");
             image.setAttribute("id", "videodiv-image");
@@ -252,14 +245,16 @@ function loadMedia(obj){
         document.title = obj.name;
         videodiv.block.style.display = "block";
 
-        videodiv.block.addEventListener("click", function(){
-            if (!videodiv.element.contains(event.target) && !videodiv.leftArrow.contains(event.target) && !videodiv.rightArrow.contains(event.target)){
-                document.title = dom.innerHTML;
-                videodiv.block.style.display = "none";
-                unsetbArrows();
-            }
-        });
     }
+    
+    videodiv.block.addEventListener("click", function(){
+        if (!videodiv.element.contains(event.target) && !videodiv.leftArrow.contains(event.target) && !videodiv.rightArrow.contains(event.target)){
+            document.title = dom.innerHTML;
+            videodiv.block.style.display = "none";
+            unsetbArrows();
+            if($('video').length > 0) $('video').pause();
+        }
+    });
 
 }
 
