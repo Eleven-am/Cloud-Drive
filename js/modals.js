@@ -196,7 +196,7 @@ function setrArrow(int) {
     videodiv.rightArrow.setAttribute("data-name", mediaArray[int+1].attributes["data-name"].nodeValue);
 }
 
-function setbArrows( int){
+function setbArrows(int){
     setlArrow(int);
     setrArrow(int);
 }
