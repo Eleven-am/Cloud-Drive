@@ -3,13 +3,11 @@
 session_start();
 require('class.php');
 	
-	$password = "";
-	
 	if (isset($_POST['key'])){
 
 		$key = $_POST['key'];
 
-		if ($key === $password){
+		if ($key === $_SESSION["password"]){
 
 			unset($_SESSION['auth']);
 			$_SESSION['auth'] = (int)(microtime(true) * 1000);
