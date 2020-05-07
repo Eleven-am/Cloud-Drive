@@ -3,7 +3,7 @@
 session_start();
 require('class.php');
 	
-	$password = "Eleven";
+	$password = "";
 	
 	if (isset($_POST['key'])){
 
