@@ -34,10 +34,10 @@ include("json.php");
 	if (isset($_GET['path'])){
 	    $path = decypher($_GET['path'], 2, FALSE);
         $dir = ($path != 'root')? $path: $_SESSION['root'];
-        $dir = ($dir != 'back')? $dir: dirname($_SESSION['movelocale']);
+        $dir = ($dir != 'back')? $dir: dirname($_SESSION['movelocale'].'/');
 		$dir = (startsWith($dir, $_SESSION['root']))? $dir: $_SESSION['root'];
 
-		$_SESSION['movelocale'] = $dir;
+		$_SESSION['movelocale'] = $dir.'/';
 		$list = preg_grep('/^([^.])/', scandir($dir));
 		$tmp = [];
 
@@ -86,9 +86,10 @@ include("json.php");
         $myJSON =  json_encode($result);
         echo $myJSON;
 
-        if ($disk != 0 && disk_free_space("/") != $disk){
-            create(folderscan($_SESSION["search"]), $_SESSION["JSON"]."search.json");
-        }
+        if ($disk != 0 && (disk_free_space("/") < $disk - 1000000 || disk_free_space("/") > $disk + 1000000)){
+            //create(folderscan($_SESSION["search"]), $_SESSION["JSON"]."search.json");
+          
+        } 
 
 
     } else {

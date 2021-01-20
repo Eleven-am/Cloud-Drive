@@ -3,11 +3,13 @@
 session_start();
 require('class.php');
 	
+	$password = "quthes-wumvoT-febte0";
+	
 	if (isset($_POST['key'])){
 
 		$key = $_POST['key'];
 
-		if ($key === $_SESSION["password"]){
+		if ($key === $password){
 
 			unset($_SESSION['auth']);
 			$_SESSION['auth'] = (int)(microtime(true) * 1000);

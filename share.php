@@ -19,7 +19,7 @@ include("json.php");
             $_SESSION['share'] = $_SESSION["cypher"];
 
         }
-        header('Location: https://www.maix.ovh');
+        header('Location: https://mydrive.maix.ovh/');
 
 	}
 

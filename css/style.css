@@ -3,9 +3,9 @@
     from {
         text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #93DCF1, 0 0 8px #93DCF1, 0 0 10px #93DCF1, 0 0 12px #93DCF1, 0 0 14px #93DCF1;
     }
-       to {
-           text-shadow: 0 0 4px #fff, 0 0 6px #CBEEF8, 0 0 8px #CBEEF8, 0 0 10px #CBEEF8, 0 0 12px #CBEEF8, 0 0 14px #CBEEF8, 0 0 16px #CBEEF8;
-       }
+    to {
+        text-shadow: 0 0 4px #fff, 0 0 6px #CBEEF8, 0 0 8px #CBEEF8, 0 0 10px #CBEEF8, 0 0 12px #CBEEF8, 0 0 14px #CBEEF8, 0 0 16px #CBEEF8;
+    }
 }
 
 @-webkit-keyframes tick {
@@ -16,8 +16,8 @@
 /* Header Styles */
 .headcont{
     position: fixed;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 100%;
     max-height: 65px;
     background-color: #192a56;
@@ -41,27 +41,26 @@
     padding: 0 10px;
 }
 
-.search{
+#searchForm{
     display: inline-flex;
     justify-content: space-around;
-    width: 40%;
-}
-
-#searchForm{
-    padding-top: 5px;
+    width: 530px;
     border: 2px solid #192a56;
     border-radius: 60px;
     transition: border-color 1.5s;
-    width: 100%;
 }
 
 #searchb{
+    position: relative;
+    top: 50%;
+    transform: translateY(25%);
     width: 98%;
     height: 100%;
     border: 0;
     background: transparent;
     color: #6bcfed;
     font-size: 20px;
+    padding: 0;
 }
 
 #searchb::placeholder{
@@ -74,6 +73,7 @@
     padding-top: 5px;
     padding-bottom: 5px;
     top: 50%;
+    transform: translateY(3%);
     float: right;
     margin-right: 2%;
 }
@@ -83,7 +83,6 @@
     align-items: center;
     width: 90%;
     height: 80%;
-    float: left;
 }
 
 .navlist {
@@ -91,10 +90,12 @@
     justify-content: space-around;
     font-family: 'Barlow Condensed', sans-serif;
     list-style: none;
+    padding-left: 0;
+    margin: 0;
 }
 
 .navlist > li{
-    padding: 30px 20px;
+    padding: 0 20px;
 }
 
 /* hover and focus for header */
@@ -155,6 +156,7 @@ body{
     font-size: large;
     font-weight: bold;
     color: #192a56;
+    cursor: pointer;
 }
 
 #create-folder{
@@ -188,16 +190,12 @@ body{
     border-bottom-right-radius: 60px;
     border-top-right-radius: 60px;
     margin: 2px 0px;
+    cursor: pointer;
 }
 
 .he{
     background-color: #dcdde1;
-    cursor: pointer;
     transition: background-color .5s ease-in-out;
-}
-
-.he label{
-    cursor: pointer;
 }
 
 #side-divider{
@@ -229,7 +227,7 @@ body{
 
 #storage{
     position: relative;
-    top: 18px;
+    top: 22px;
     transform: translateY(-27px);
     display: inline-block;
     font-family: 'Barlow Condensed', sans-serif;
@@ -243,7 +241,7 @@ body{
     font-size: small;
     color: rgba(25, 42, 86, .7);
     font-family: 'Barlow Condensed', sans-serif;
-    padding-left: 20%;
+    padding-left: 18%;
 }
 
 /* SIDE BAR FOCUS AND HOVER */
@@ -254,19 +252,6 @@ body{
 
 .he:hover{
     background-color: rgba(193, 194, 199, .7);
-}
-
-.he label:hover{
-    cursor: pointer;
-}
-
-.hasfocus:hover{
-    background-color: rgba(197, 213, 232,1);
-    cursor: default;
-}
-
-.hasfocus label:hover{
-    cursor: default;
 }
 
 /* The file structure */
@@ -339,8 +324,10 @@ body{
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     width: 100%;
-    min-height: 70%;
-    max-height: 85%;
+    height: 81%;
+    object-fit: contain;
+    background-color: black;
+    /*background-color: rgba(193, 194, 199, .9);*/
 }
 
 .play-button{
@@ -604,25 +591,25 @@ body{
 }
 
 /* Info reporting divs */
- #info-reporting{
-     position: fixed;
-     right: -50%;
-     top: 13%;
-     min-width: 30%;
-     background-color: rgba(50, 168, 82, .9);
-     color: white;
-     font-family: 'Barlow Condensed', sans-serif;
-     box-shadow: 0 3px 4px 0 rgba(0,0,0,0.24), 0 4.25px 12.5px 0 rgba(0,0,0,0.19);
-     border-top-left-radius: 10px;
-     border-bottom-left-radius: 10px;
-     z-index: 99999;
-     transition: right .5s ease-in-out;
- }
+#info-reporting{
+    position: fixed;
+    right: -50%;
+    top: 13%;
+    min-width: 30%;
+    background-color: rgba(50, 168, 82, .9);
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.24), 0 4.25px 12.5px 0 rgba(0,0,0,0.19);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    z-index: 99999;
+    transition: right .5s ease-in-out;
+}
 
- #info-reporting-container{
-     display: inline-flex;
-     min-width: 100%;
- }
+#info-reporting-container{
+    display: inline-flex;
+    min-width: 100%;
+}
 
 #info-reporting-img{
     padding: 10px 7px 10px 15px;
@@ -709,6 +696,9 @@ body{
     border-left: 5px solid #192a56;
     border-right: 5px solid #192a56;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .inputfile {
@@ -761,7 +751,6 @@ body{
 /* The delete modal */
 
 .error-label{
-    text-align: center;
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 18px;
     font-weight: bolder;
@@ -976,9 +965,9 @@ body{
     transition: border-color 1.5s;
     cursor: pointer;
 }
- .move_element label{
-     cursor: pointer;
- }
+.move_element label{
+    cursor: pointer;
+}
 
 .unmovable-file{
     opacity: .3;

@@ -9,10 +9,9 @@ $dir_old = decypher($_GET["resource"], 1, FALSE);
 		$dir_old = $_SESSION["state"];
 	}
 
-$dir_old = ($dir_old  != "home")? $dir_old : $_SESSION['root'];
+$dir_old = ($dir_old  != "home" && $dir_old  != "root")? $dir_old : $_SESSION['root'];
 if (file_exists($_SESSION["JSON"]."recent.json")) $_SESSION["recent"] = retrieve($_SESSION["JSON"]."recent.json");
 //if (!file_exists($_SESSION["JSON"]."search.json")) create(folderscan($_SESSION["search"]),$_SESSION["JSON"]."search.json");
-
 	if (startsWith($dir_old, $_SESSION['root'])){
 		$dir = $dir_old;
 

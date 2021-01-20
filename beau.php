@@ -1,5 +1,4 @@
 <?php
-
 session_abort();
 include("json.php");
 include("class.php");
@@ -13,7 +12,7 @@ include("class.php");
                 $img_file = $_SESSION["JSON"] . pathinfo($item, PATHINFO_FILENAME) . ".png";
                 $tmp = strtolower(end(explode(".", $item)));
                 $media = $tmp === "mkv" || $tmp === "mp4" || $tmp === "m4v" || $tmp === "webm";
-                $img = $tmp === "png" || $tmp === "jpg";
+                $img = $tmp === "png" || $tmp === "jpg" || $tmp === "jpeg";
 
                 if($media || $img){
                     $mediaclass = $media? "recent-div cons media": "recent-div cons image";
@@ -44,13 +43,31 @@ include("class.php");
         $myJSON = json_encode($info);
         echo $myJSON;
 
-    } else {
-        if (isset($_GET["test"])) {
-            $path = $_GET["test"];
-            echo locate($path);
-        }
+    } else if (isset($_GET["check"])) {
+        $tvDirectory = ['/home/maix/Gdrive/TV Shows/', '/home/maix/Gdrive/Multimedia/TV Shows/', '/home/maix/Mega/TV Shows/', '/home/maix/Onedrive/TV Shows/'];
+
+        $shows  = [];
+        foreach($tvDirectory as $tvdir){
+             $list = preg_grep('/^([^.])/', scandir($tvdir));
+             foreach($list as $show){
+                   $seasons = preg_grep('/^([^.])/', scandir($tvdir.$show));
+                   $show;
+                   foreach($seasons as $season){
+                          $epsiode = preg_grep('/^([^.])/', scandir($tvdir.$show."/".$season));
+                          $epsiodes = [];
+                          foreach($epsiode as $item){
+                              array_push($epsiodes, $tvdir.$show."/".$season."/".$item);
+                          }
+                     
+                          $shows[$show][$season] = $epsiodes;
+                   }     
+             }
+        }  
+      
+        $myJSON = json_encode($shows);
+        create($shows, "/home/temp/JSON/tvdb.json");
+        echo $myJSON;
+      
     }
-
-
 
 ?>

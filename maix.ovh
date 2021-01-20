@@ -1,0 +1,33 @@
+server {
+  listen 80;
+  server_name mydrive.maix.ovh;
+  root /var/www/php/maix.ovh/;
+  index index.php index.html index.htm index.nginx-debian.html;
+  client_max_body_size 2048M;
+
+  location / {
+    try_files $uri $uri/ /index.php;
+  }
+  
+  # enable gzip compression
+  gzip on;
+  gzip_vary on;
+  gzip_min_length 1000;
+  gzip_comp_level 5;
+  gzip_types application/json text/css application/x-javascript application/javascript image/svg+xml;
+  gzip_proxied any;
+
+  location ~ \.php$ {
+    fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include fastcgi_params;
+    include snippets/fastcgi-php.conf;
+  }
+
+ # A long browser cache lifetime can speed up repeat visits to your page
+  location ~* \.(jpg|jpeg|gif|png|webp|svg|woff|woff2|ttf|css|js|ico|xml)$ {
+       access_log        off;
+       log_not_found     off;
+       expires           360d;
+  }
+}

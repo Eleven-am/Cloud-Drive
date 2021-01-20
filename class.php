@@ -54,7 +54,7 @@
 			$size = sizefinder($element);
 
 				if(is_dir($element)){
-					$tmp = new fsOBJ(basename($element), $value, "disk link", "src/folder.svg", $size, "-");
+					$tmp = new fsOBJ(basename($element), $value, "disk link", "src/folder.svg", $size, basename($element));
 					array_push($folders, $tmp);
 				}
 
@@ -63,7 +63,7 @@
 					array_push($files_list, $tmp);
 				}
 
-				else if ($tmp === "png" || $tmp === "jpg"){
+				else if ($tmp === "png" || $tmp === "jpg" || $tmp === "jpeg"){
 					$tmp = new fsOBJ(basename($element), $value, "disk cons image", "src/image.svg", $size, basename($element));
 					array_push($files_list, $tmp);
 				}

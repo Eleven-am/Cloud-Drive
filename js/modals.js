@@ -226,6 +226,7 @@ function loadMedia(obj){
     if (obj.checker === "video"){
         var video = document.createElement("video");
             video.setAttribute("controls", "controls");
+            video.setAttribute("id", "myvideo");
         var source = document.createElement("source");
             source.setAttribute("src", "media.php?push="+obj.link);
 
@@ -246,13 +247,13 @@ function loadMedia(obj){
         videodiv.block.style.display = "block";
 
     }
-    
+
     videodiv.block.addEventListener("click", function(){
         if (!videodiv.element.contains(event.target) && !videodiv.leftArrow.contains(event.target) && !videodiv.rightArrow.contains(event.target)){
             document.title = dom.innerHTML;
             videodiv.block.style.display = "none";
             unsetbArrows();
-            if($('video').length > 0) $('video').pause();
+            if(document.contains(document.getElementById("myvideo"))) document.getElementById("myvideo").pause();
         }
     });
 

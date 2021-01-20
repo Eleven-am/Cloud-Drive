@@ -181,7 +181,6 @@ session_start();
 
         /* find the "desired height" of this thumbnail, relative to the desired width  */
         $desired_height = floor($height * ($desired_width / $width));
-        $desired_height = ($desired_height > 270)? 270: $desired_height;
 
         /* create a new, "virtual" image */
         $virtual_image = imagecreatetruecolor($desired_width, $desired_height);

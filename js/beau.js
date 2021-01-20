@@ -32,8 +32,8 @@ function diskinteprete(obj){
 }
 
 function hasfocus(link){
+    link  = (link === "root")? "home": link;
     let myArray = {
-        "root": document.getElementById("side-root"),
         "home": document.getElementById("side-root"),
         "Private": document.getElementById("side-Private"),
         "Downloads": document.getElementById("side-Downloads"),
@@ -49,8 +49,10 @@ function hasfocus(link){
 
     if(tmp){
         for (var key in myArray) {
-            if (key === link){
-                myArray[key].setAttribute("class", "hasfocus");
+            if (key === link && key !== "media"){
+                myArray[key].setAttribute("class", "link hasfocus");
+            }else if (key === link && key === "media"){
+                myArray[key].setAttribute("class", "hasfocus");  
             }else if (key !== link && key === "media"){
                 myArray[key].setAttribute("class", "he");
             }else {
@@ -139,18 +141,15 @@ function popRecent(folders) {
 }
 
 document.getElementById("disk-info").addEventListener("click", function(){
-    console.log("click");
-    let field = 0;
-    if (sessionStorage.getItem("size")) field = sessionStorage.getItem("size");
-
     const xhr = new XMLHttpRequest();
-    xhr.open("get", "beau.php?test="+field);
+    xhr.open("get", "beau.php?check=root");
     xhr.send();
 
     xhr.onload = function () {
         try{
-            console.log(JSON.parse(this.responseText))
+            let response = JSON.parse(this.responseText);
             console.log(this.responseText);
+            console.log(response);
         }catch (e) {
             console.log(e);
         }

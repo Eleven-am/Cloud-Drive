@@ -17,8 +17,7 @@ $(document).on("click", ".link", function(event){
 
 function indexload(link){
     verify();
-    retrieve()
-    ;
+    retrieve();
     const xhr = new XMLHttpRequest();
     progress = 5;
 
@@ -31,7 +30,6 @@ function indexload(link){
             const folders =  JSON.parse(this.responseText);
             progress = 15;
             confirmOBJ(folders, link);
-            diskfetch();
         }
         else
             console.log(this.responseText);
@@ -41,6 +39,7 @@ function indexload(link){
 
 function populate(folders, link){
     hasfocus(link);
+    document.title = folders[0].name;
 
     if (exists(document.getElementById("filelist"))){
         var element = document.querySelector("#filelist");
@@ -51,7 +50,6 @@ function populate(folders, link){
     base.setAttribute("id", "filelist");
     dom.setAttribute("data-id", folders[0].url_link);
     dom.innerHTML = folders[0].name;
-    document.title = folders[0].name;
     document.getElementById("backimg").setAttribute("data-id", folders[0].image);
 
     if (folders.length === 1){
@@ -98,6 +96,7 @@ function populate(folders, link){
 
     progress = (progress === 15)? 100: progress + 5;
     dropzone.append(base);
+    diskfetch();
 }
 
 function progresstracker()
@@ -141,25 +140,24 @@ searchobj.button.addEventListener("click",function(e){
 function searchfunc (){
     const data = new FormData();
     data.append("search", searchobj.input.value);
-    query(data);
+    query(data, "search");
     searchobj.input.value = '';
     searchobj.input.blur();
 }
 
 function media(){
-    hasfocus("media");
     const data = new FormData();
     data.append("search", "media");
-    query(data);
+    query(data, "media");
 }
 
-function query(data){
+function query(data, link){
     const xhr = new XMLHttpRequest();
     xhr.onload = function(){
         let response = null;
         try {
             response = JSON.parse(this.responseText);
-            confirmOBJ(response);
+            confirmOBJ(response, link);
         } catch(e) {
             console.log(this.responseText);
         }
